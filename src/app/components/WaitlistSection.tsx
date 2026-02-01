@@ -16,7 +16,11 @@ export function WaitlistSection() {
     try {
       console.log('📤 Envoi des données:', data);
 
-      const response = await fetch('http://localhost:8000/api/subscribe', {
+      // URL du backend (dev local ou production)
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      console.log('🔗 API URL:', apiUrl);
+
+      const response = await fetch(`${apiUrl}/api/subscribe`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

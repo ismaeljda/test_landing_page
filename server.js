@@ -8,15 +8,25 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+// Configuration CORS pour accepter les requêtes depuis Vercel
+const corsOptions = {
+  origin: [
+    'http://localhost:5173', // Dev local
+    'https://test-landing-page-theta.vercel.app', // Production Vercel
+    /\.vercel\.app$/ // Tous les sous-domaines Vercel
+  ],
+  methods: ['GET', 'POST'],
+  credentials: true
+};
+
 // Middleware de debug
 app.use((req, res, next) => {
   console.log(`\n📥 ${req.method} ${req.path}`);
-  console.log('Headers:', req.headers);
-  console.log('Body:', req.body);
+  console.log('Origin:', req.headers.origin);
   next();
 });
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Configuration Google Sheets
@@ -109,14 +119,14 @@ app.get('/health', (req, res) => {
 
 app.listen(PORT, () => {
   console.log('\n' + '='.repeat(60));
-  console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
+  console.log(`🚀 Serveur démarré sur le port ${PORT}`);
   console.log('='.repeat(60));
   console.log(`📊 Google Sheet ID: ${SPREADSHEET_ID}`);
   console.log(`📝 Feuille: ${SHEET_NAME}`);
   console.log(`🔑 Refresh Token configuré: ${process.env.GOOGLE_REFRESH_TOKEN ? 'OUI ✅' : 'NON ❌'}`);
   console.log('='.repeat(60));
   console.log('📡 Endpoints disponibles:');
-  console.log('  - POST http://localhost:' + PORT + '/api/subscribe');
-  console.log('  - GET  http://localhost:' + PORT + '/health');
+  console.log(`  - POST /api/subscribe`);
+  console.log(`  - GET  /health`);
   console.log('='.repeat(60) + '\n');
 });
