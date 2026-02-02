@@ -14,7 +14,7 @@ const corsOptions = {
     'http://localhost:5173', // Dev local
     'https://test-landing-page-theta.vercel.app',
     'https://somnium.fr', // Production somnium.fr
-    'https://www.somnium.fr' // Production www.somnium.fr // Production Vercel
+    'https://www.somnium.fr', // Production www.somnium.fr // Production Vercel
     /\.vercel\.app$/ // Tous les sous-domaines Vercel
   ],
   methods: ['GET', 'POST'],
