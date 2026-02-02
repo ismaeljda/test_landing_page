@@ -12,7 +12,9 @@ const PORT = process.env.PORT || 8000;
 const corsOptions = {
   origin: [
     'http://localhost:5173', // Dev local
-    'https://test-landing-page-theta.vercel.app', // Production Vercel
+    'https://test-landing-page-theta.vercel.app',
+    'https://somnium.fr', // Production somnium.fr
+    'https://www.somnium.fr' // Production www.somnium.fr // Production Vercel
     /\.vercel\.app$/ // Tous les sous-domaines Vercel
   ],
   methods: ['GET', 'POST'],
