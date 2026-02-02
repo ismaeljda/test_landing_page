@@ -4,15 +4,33 @@ import { XCircle } from 'lucide-react';
 const pains = [
   {
     title: "Vous dépensez 500-2000€/mois en Meta Ads",
-    description: "Mais vous n'avez aucune idée du retour sur investissement réel de chaque euro dépensé."
+    description: "Mais vous n'avez aucune idée du retour sur investissement réel de chaque euro dépensé.",
+    impact: "Budget gaspillé estimé : 20-40%"
   },
   {
     title: "Vous ne savez pas si vos pubs fonctionnent",
-    description: "Conversions Meta vs GA4 ? Les données se contredisent et vous naviguez à vue."
+    description: "Conversions Meta vs GA4 ? Les données se contredisent et vous naviguez à vue.",
+    impact: "Décisions basées sur des données erronées"
   },
   {
     title: "Trop d'outils différents à gérer",
-    description: "GA4, Meta Business Suite, PageSpeed... vous perdez 10h par semaine à tout croiser."
+    description: "GA4, Meta Business Suite, PageSpeed... vous perdez 10h par semaine à tout croiser.",
+    impact: "40h/mois perdues = 2000€ de temps perdu"
+  },
+  {
+    title: "Attribution des conversions impossible",
+    description: "Quel canal apporte vraiment des ventes ? Facebook dit oui, GA4 dit non. Impossible de trancher.",
+    impact: "Mauvaise allocation du budget marketing"
+  },
+  {
+    title: "Optimisation manuelle chronophage",
+    description: "Vous ajustez vos campagnes à la main, sans savoir quelles audiences ou créas performent vraiment.",
+    impact: "CPM en hausse de 30-50%"
+  },
+  {
+    title: "Aucune vision globale du funnel",
+    description: "Vous savez combien de clics vous avez, mais pas pourquoi les gens partent avant d'acheter.",
+    impact: "Taux de conversion bloqué à 1-2%"
   }
 ];
 
@@ -24,9 +42,9 @@ export function PainPoints() {
           Vous vous reconnaissez ?
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {pains.map((pain, index) => (
-            <div 
+            <div
               key={index}
               className="bg-[#F9FAFB] p-8 rounded-2xl border border-[#E5E7EB] transition-all duration-300 hover:shadow-md hover:-translate-y-1"
             >
@@ -36,9 +54,14 @@ export function PainPoints() {
               <h3 className="text-lg font-semibold text-[#1F2937] mb-4">
                 {pain.title}
               </h3>
-              <p className="text-sm text-[#6B7280] leading-relaxed">
+              <p className="text-sm text-[#6B7280] leading-relaxed mb-4">
                 {pain.description}
               </p>
+              <div className="pt-4 border-t border-[#E5E7EB]">
+                <p className="text-xs font-semibold text-red-600 uppercase tracking-wide">
+                  {pain.impact}
+                </p>
+              </div>
             </div>
           ))}
         </div>
